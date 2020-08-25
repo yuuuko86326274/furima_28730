@@ -32,27 +32,14 @@ Things you may want to cover:
 | nickname       | string     | null: false     |
 | mail           | string     | null: false     |
 | password       | string     | null: false     |
-| account        | references |                 |
 | personal_files | references | null: false     |
 | items          | references | null: false     |
 ### Association
 
-- belongs_to :account
-- belongs_to :personal_file
+
+- has_one :personal_file
 - has_many :items 
 
-
-##  accuounts テーブル
-
-| Column      | Type       | Option          |
-| ----------- | ---------- | --------------- |
-| mail        | string     | null: false     |
-| password    | string     | null: false     |
-| user        | references | null: false     |
-
-### Association
-
-- belongs_to :user
 
 
 ##  personal_files テーブル
@@ -70,7 +57,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :address
+- has_one :address
 - belongs_to_ active_hash :year
 - belongs_to_ active_hash :month
 - belongs_to_ active_hash :day
@@ -111,7 +98,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :address
+- has_one :address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :delivery_burden
