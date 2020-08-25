@@ -92,7 +92,7 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :purchase_item
+- has_one :purchase_item
 - has_one :address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
