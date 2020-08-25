@@ -82,7 +82,7 @@ Things you may want to cover:
 | price               | string     | null: false                            |
 | sales_fee           | string     | null: false                            |
 | sales_profit        | string     | null: false                            |
-| user                | references | null: false, forein_key: true          |
+| purchase_item       | references | null: false, forein_key: true          |
 | address             | references | null: false, forein_key: true          |
 | category_id         | integer    | null: false                            |
 | item_status_id      | integer    | null: false                            |
