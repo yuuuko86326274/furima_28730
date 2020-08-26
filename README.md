@@ -41,7 +41,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_one :purchase_item
+- has_many :purchase_item
 
 
 ##  addresses テーブル
