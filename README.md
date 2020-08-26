@@ -36,20 +36,12 @@ Things you may want to cover:
 | last_name        | string     | null: false              |
 | first_name_pkey  | string     | null: false              |
 | last_name_pkey   | string     | null: false              |
-| birth_year_id    | integer    | null: false              |
-| birth_month_id   | integer    | null: false              |
-| birth_day_id     | integer    | null: false              |
-| adress           | references | null: false, forein_key: |
-| purchace_items   | references | null: false, forein_key: |
+| birthday         | date       | null: false              |
 
 ### Association
 
-- has_one :address
-- has_many :purchace_items
-- belongs_to_ active_hash :birth_year
-- belongs_to_ active_hash :birth_month
-- belongs_to_ active_hash :birth_day
-
+- belongs_to :address
+- has_many :items
 
 
 ##  addresses テーブル
@@ -63,12 +55,12 @@ Things you may want to cover:
 | bilding_name     | string     |                                        |
 | tel              | string     | null: false                            |
 | user             | references | null: false, forein_key: true          |
-| item             | references | null: false, forein_key: true          |
+| purchase_item    | references | null: false, forein_key: true          |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :item
+- belongs_to :purchase_item
 - belongs_to_active_hash :prefectures
 
 
@@ -77,13 +69,10 @@ Things you may want to cover:
 | Column              | Type       | Option                                 |
 | ------------------- | ---------- | -------------------------------------- |
 | image               | string     | null: false                            |
-| item                | string     | null: false                            |
+| name                | string     | null: false                            |
 | item_text           | text       | null: false                            |
 | price               | string     | null: false                            |
-| sales_fee           | string     | null: false                            |
-| sales_profit        | string     | null: false                            |
-| purchase_item       | references | null: false, forein_key: true          |
-| address             | references | null: false, forein_key: true          |
+| user                | references | null: false, forein_key: true          |
 | category_id         | integer    | null: false                            |
 | item_status_id      | integer    | null: false                            |
 | delivery_burden_id  | integer    | null: false                            |
@@ -92,8 +81,7 @@ Things you may want to cover:
 
 ### Association
 
-- has_one :purchase_item
-- has_one :address
+- belongs_to :user
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :delivery_burden
@@ -112,3 +100,4 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
