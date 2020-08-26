@@ -40,8 +40,8 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :address
 - has_many :items
+- has_one :purchase_item
 
 
 ##  addresses テーブル
@@ -54,12 +54,10 @@ Things you may want to cover:
 | adress_num       | string     | null: false                            |
 | bilding_name     | string     |                                        |
 | tel              | string     | null: false                            |
-| user             | references | null: false, forein_key: true          |
 | purchase_item    | references | null: false, forein_key: true          |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :purchase_item
 - belongs_to_active_hash :prefectures
 
@@ -71,7 +69,7 @@ Things you may want to cover:
 | image               | string     | null: false                            |
 | name                | string     | null: false                            |
 | item_text           | text       | null: false                            |
-| price               | string     | null: false                            |
+| price               | integer    | null: false                            |
 | user                | references | null: false, forein_key: true          |
 | category_id         | integer    | null: false                            |
 | item_status_id      | integer    | null: false                            |
@@ -82,6 +80,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
+- has_one :purchase_item
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :delivery_burden
