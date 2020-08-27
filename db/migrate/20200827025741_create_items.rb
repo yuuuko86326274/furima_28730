@@ -1,9 +1,9 @@
 class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
-      t.string :image,          null: false
       t.string :name,           null: false
       t.text :item_text,        null: false
+      t.integer :price,         null: false
       t.timestamps
     end
   end
@@ -19,7 +19,7 @@ end
 #| image               | string     | ##null: false                            |
 #| name                | string     | ##null: false                            |
 #| item_text           | text       | ##null: false                            |
-##| price               | integer    | null: false                            |
+#| price               | integer    | null: false                            |
 ##| user                | references | null: false, forein_key: true          |
 ##| delivery_burden_id  | integer    | null: false                            |
 ##| delivery_area_id    | integer    | null: false                            |

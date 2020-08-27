@@ -1,8 +1,5 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.order("created_at DESC")
   end
-
-  def item_params
-    params.require(:item).permit(:image, :name, :item_text)
 end
