@@ -1,6 +1,6 @@
 <%= render "shared/second-header"%>
-
-<%= form_with url: user_session_path, method: :post, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, as: @user_name, url: user_session_path(@user_name), class: 'registration-main', local: true do |f| %>
+<%= render 'shared/error_messages', model: f.object %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
