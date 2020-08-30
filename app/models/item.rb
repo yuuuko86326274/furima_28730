@@ -12,7 +12,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :item_text 
-    validates :price#, format: { with: \d[1-3]{3,7} }
+    validates :price, inclusion: {in:300..9999999}
     validates :user_id
     validates :category_id
     validates :item_status_id
