@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @items = Item.create(item_params)
 
     if @items.valid?
