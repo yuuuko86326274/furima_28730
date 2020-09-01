@@ -10,7 +10,6 @@ RSpec.describe Item, type: :model do
 
     context '出品がうまくいくとき' do
       it '全ての値が正しく入力されていたら保存できること' do
-        # binding.pry
         expect(@item).to be_valid
       end
 
@@ -75,8 +74,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery days can't be blank", 'Delivery days is not a number')
       end
 
-      it 'priceの範囲が、¥300〜¥9,999,999以外だと保存できないこと' do
+      it 'priceが、¥300より安いと保存できないこと' do
         @item.price = '299'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+
+      it 'priceが、¥9,999,999より高いと保存できないこと' do
+        @item.price = '10000000'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
