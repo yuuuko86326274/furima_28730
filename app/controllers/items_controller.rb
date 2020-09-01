@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -14,9 +14,9 @@ class ItemsController < ApplicationController
 
     if @items.valid?
       @items.save  # バリデーションをクリアした時
-      return redirect_to root_path
+      redirect_to root_path
     else
-      render "new"    # バリデーションに弾かれた時
+      render 'new'    # バリデーションに弾かれた時
     end
   end
 
@@ -27,6 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image,:name,:item_text,:price,:category_id,:item_status_id,:delivery_burden_id,:delivery_area_id,:delivery_days_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :item_text, :price, :category_id, :item_status_id, :delivery_burden_id, :delivery_area_id, :delivery_days_id).merge(user_id: current_user.id)
   end
 end

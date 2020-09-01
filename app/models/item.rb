@@ -11,8 +11,8 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :image
     validates :name
-    validates :item_text 
-    validates :price, inclusion: {in:300..9999999}
+    validates :item_text
+    validates :price, inclusion: { in: 300..9_999_999 }
     validates :user_id
     validates :category_id
     validates :item_status_id
@@ -30,20 +30,19 @@ class Item < ApplicationRecord
   end
 end
 
-
 ##  items テーブル
 
-#| Column              | Type       | Option                                 |
-#| image               | string     | null: false                            |
-#| name                | string     | null: false                            |
-#| item_text           | text       | null: false                            |
-#| price               | integer    | null: false                            |
-#| user                | references | null: false, forein_key: true          |
-#| category_id         | integer    | null: false                            |
-#| item_status_id      | integer    | null: false                            |
-#| delivery_burden_id  | integer    | null: false                            |
-#| delivery_area_id    | integer    | null: false                            |
-#| delivery_days_id    | integer    | null: false                            |
+# | Column              | Type       | Option                                 |
+# | image               | string     | null: false                            |
+# | name                | string     | null: false                            |
+# | item_text           | text       | null: false                            |
+# | price               | integer    | null: false                            |
+# | user                | references | null: false, forein_key: true          |
+# | category_id         | integer    | null: false                            |
+# | item_status_id      | integer    | null: false                            |
+# | delivery_burden_id  | integer    | null: false                            |
+# | delivery_area_id    | integer    | null: false                            |
+# | delivery_days_id    | integer    | null: false                            |
 
 ### Association
 
