@@ -5,8 +5,8 @@ RSpec.describe Item, type: :model do
     before do
       @user = FactoryBot.create(:user) 
       @item = FactoryBot.build(:item,user_id:@user.id)
-    end
-
+      @item.image = fixture_file_upload('public/images/camera.png')
+    end 
 
     context '出品がうまくいくとき' do
       it '全ての値が正しく入力されていたら保存できること' do

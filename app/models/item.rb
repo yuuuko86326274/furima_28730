@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_days
 
   with_options presence: true do
-    #validates :image
+    validates :image
     validates :name
     validates :item_text 
     validates :price, inclusion: {in:300..9999999}
