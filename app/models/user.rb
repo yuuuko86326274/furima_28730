@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :items
+  has_many :purchase_items
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -17,21 +18,3 @@ class User < ApplicationRecord
     validates :birthday
   end
 end
-
-##  users テーブル
-
-# | Column           | Type       | Option                   |
-# | ---------------- | ---------- | ------------------------ |
-# | nickname         | string     | null: false              |
-# | email             | string     | null:false              |
-# | password         | string     | null: false              |
-# | first_name       | string     | null: false              |
-# | last_name        | string     | null: false              |
-# | first_name_pkey  | string     | null: false              |
-# | last_name_pkey   | string     | null: false              |
-# | birthday         | date       | null: false              |
-
-### Association
-
-#- has_many :items
-#- has_many :purchase_items
