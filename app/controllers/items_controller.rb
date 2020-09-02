@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
 
   def index
-    #@items = Item.all.order('created_at DESC')
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -13,12 +13,16 @@ class ItemsController < ApplicationController
     @items = Item.create(item_params)
 
     if @items.valid?
-      @items.save  # バリデーションをクリアした時
+      @items.save
       redirect_to root_path
     else
-      render 'new'    # バリデーションに弾かれた時
+      render 'new'
     end
   end
+
+   def show
+    @item = Item.find(params[:id])
+   end
 
   private
 
