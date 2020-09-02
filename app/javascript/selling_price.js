@@ -9,7 +9,7 @@ window.addEventListener ("load",function() {
   });
 });
 
-NOTE:~~~~~~~~~~~~~~~~~~~~~~~~~
+// TODO:
 //ページが読み込まれたときのイベント
 //formの値を取得する
 //キーを入力したときのイベント
