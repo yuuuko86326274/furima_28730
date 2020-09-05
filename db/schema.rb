@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_022937) do
     t.string "postal_code", null: false
     t.integer "delivery_area_id", null: false
     t.string "city", null: false
-    t.string "adress_num", null: false
-    t.string "bilding_name"
+    t.string "address_num", null: false
+    t.string "building_name"
     t.string "tel", null: false
     t.bigint "purchase_item_id", null: false
     t.datetime "created_at", precision: 6, null: false

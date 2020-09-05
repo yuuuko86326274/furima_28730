@@ -1,50 +1,46 @@
 class PurchaseItemsController < ApplicationController
   before_action :move_to_login
-  
+
   def index
     @item = Item.find(params[:item_id])
+    @transaction = Transactions.new
   end
-  
-  def create
-    @address = Address.create(address_params)
 
-    @purchase_item = PurchaseItem.create(order_params)
-    if @purchase_item.valid?
+  def create
+    @item = Item.find(params[:item_id])
+    @transaction = Transactions.new(purchase_params)
+    if @transaction.valid?
+      @transaction.save
       pay_item
-      @purchase_item.save
       return redirect_to root_path
     end
-    render 'index'
+     render 'index'
   end
 
-
   private
-
   def move_to_login
     redirect_to new_item_path unless user_signed_in?
   end
 
-  def address_params
-    params.require(:address).permit(
+  def purchase_params
+    params.permit(
       :postal_code,
       :delivery_area_id,
       :city,
       :address_num,
       :building_name,
-      :tel)
-  end
-
-  def order_params
-    params.require(:item
-    ).permit(:price, :token
-    ).merge(user_id: current_user.id, item_id: params[:item_id])
+      :tel,
+      :token
+      )
+      .merge(user_id: current_user.id)
+      .merge(item_id: @item.id)
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: order_params[:price],
-      card: order_params[:token],
+      amount: @item.price,
+      card: purchase_params[:token],
       currency:'jpy'
     )
   end
