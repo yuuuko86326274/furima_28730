@@ -1,11 +1,10 @@
 class Transactions
-
   include ActiveModel::Model
-  attr_accessor :token,:postal_code,:delivery_area_id,:city,:address_num,:building_name,:tel,:user_id,:item_id
+  attr_accessor :token, :postal_code, :delivery_area_id, :city, :address_num, :building_name, :tel, :user_id, :item_id
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
-    validates :delivery_area_id, numericality:{ other_than: 0 }
+    validates :delivery_area_id, numericality: { other_than: 0 }
     validates :city
     validates :address_num
     validates :tel, format: { with: /\A\d{11}\z/ }

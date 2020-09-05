@@ -20,7 +20,7 @@ RSpec.describe Transactions, type: :model do
         expect(@transaction).to be_valid
       end
     end
-    context '保存がうまくいかないとき' do 
+    context '保存がうまくいかないとき' do
       it 'postal_codeが空だと保存できないこと' do
         @transaction.postal_code = nil
         @transaction.valid?
