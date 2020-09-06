@@ -8,6 +8,6 @@ FactoryBot.define do
     tel { Faker::Number.number(digits: 11) }
     association :user
     association :item
-    # token
+    token {'tok_5ca06b51685e001723a2c3b4aeb4'}
   end
 end
