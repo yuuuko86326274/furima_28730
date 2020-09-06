@@ -29,8 +29,10 @@
     <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
     <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-  <% elsif @purchase_item.present? %>
+  <%elsif %>
+  <% unless @purchase_item.present? %>
     <%= link_to '購入画面に進む', item_purchase_items_path(@item.id), class:"item-red-btn" %>
+  <% end %>
   <% end %>
 
     <div class="item-explain-box">

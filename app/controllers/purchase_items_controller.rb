@@ -1,16 +1,13 @@
 class PurchaseItemsController < ApplicationController
   before_action :move_to_login
+  before_action :item_id_search
+  before_action :purchase_user_sell
 
   def index
-    @item = Item.find(params[:item_id])
-    if @item.purchase_item.present?
-      redirect_to root_path
-    end
     @transaction = Transactions.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @transaction = Transactions.new(purchase_params)
     if @transaction.valid?
       @transaction.save
@@ -24,6 +21,16 @@ class PurchaseItemsController < ApplicationController
 
   def move_to_login
     redirect_to new_item_path unless user_signed_in?
+  end
+
+  def item_id_search
+    @item = Item.find(params[:item_id])
+  end
+
+  def purchase_user_sell
+    if @item.purchase_item.present? || current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def purchase_params

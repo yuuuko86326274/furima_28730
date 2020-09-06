@@ -46,6 +46,11 @@ RSpec.describe Transactions, type: :model do
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include("Tel can't be blank")
       end
+      it 'tokenが空だと保存できないこと' do
+        @transaction.tel = nil
+        @transaction.valid?
+        expect(@transaction.errors.full_messages).to include("Token can't be blank")
+      end
       it 'postal_codeが半角数字のハイフン入りの郵便番号でなければ保存できないこと' do
         @transaction.postal_code = '333jjjj'
         @transaction.valid?
