@@ -26,8 +26,8 @@ RSpec.describe Transactions, type: :model do
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include("Postal code can't be blank")
       end
-      it 'delivery_area_idが空だと保存できないこと' do
-        @transaction.delivery_area_id = nil
+      it 'delivery_area_idが空、もしくは---指定だと保存できないこと' do
+        @transaction.delivery_area_id = "0"
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include("Delivery area can't be blank", 'Delivery area is not a number')
       end
@@ -51,8 +51,18 @@ RSpec.describe Transactions, type: :model do
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include('Postal code is invalid')
       end
+      it 'postal_codeが半角数字3桁、ハイフン、半角数字4桁の状態（例：111-1111）でないと保存できないこと' do
+        @transaction.postal_code = '333-jjj'
+        @transaction.valid?
+        expect(@transaction.errors.full_messages).to include('Postal code is invalid')
+      end
       it 'telが半角11桁の数字でなければ保存できないこと' do
         @transaction.tel = '1234567890'
+        @transaction.valid?
+        expect(@transaction.errors.full_messages).to include('Tel is invalid')
+      end
+      it 'telがハイフン入りでは保存できないこと' do
+        @transaction.tel = '123-456-890'
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include('Tel is invalid')
       end

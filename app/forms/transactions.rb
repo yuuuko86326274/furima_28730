@@ -10,7 +10,7 @@ class Transactions
     validates :tel, format: { with: /\A\d{11}\z/ }
     validates :user_id
     validates :item_id
-    # validates :token
+    validates :token
   end
 
   def save

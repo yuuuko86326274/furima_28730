@@ -3,6 +3,9 @@ class PurchaseItemsController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
+    if @item.purchase_item.present?
+      redirect_to root_path
+    end
     @transaction = Transactions.new
   end
 
