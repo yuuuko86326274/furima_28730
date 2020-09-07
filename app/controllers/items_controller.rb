@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
-  before_action :find_id, except: [:index, :new, :create]
+  before_action :move_to_index, except: %i[index show]
+  before_action :find_id, except: %i[index new create]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -20,11 +20,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @item.update(item_params)
