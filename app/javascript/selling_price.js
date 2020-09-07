@@ -8,11 +8,3 @@ window.addEventListener ("load",function() {
     document.getElementById("profit").textContent = Math.round(pro);
   });
 });
-
-// TODO:
-//ページが読み込まれたときのイベント
-//formの値を取得する
-//キーを入力したときのイベント
-//formの値に対して販売手数料を計算
-//販売利益も計算
-//上で計算した値を表示させる
