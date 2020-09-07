@@ -27,9 +27,9 @@ RSpec.describe Transactions, type: :model do
         expect(@transaction.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'delivery_area_idが空、もしくは---指定だと保存できないこと' do
-        @transaction.delivery_area_id = "0"
+        @transaction.delivery_area_id = '0'
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Delivery area must be other than 0")
+        expect(@transaction.errors.full_messages).to include('Delivery area must be other than 0')
       end
       it 'cityが空だと保存できないこと' do
         @transaction.city = nil
