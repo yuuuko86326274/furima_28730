@@ -24,7 +24,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
 
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render 'show'
+    end
   end
 
   def destroy
