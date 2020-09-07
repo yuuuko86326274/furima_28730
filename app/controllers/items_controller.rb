@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: %i[index show]
+  before_action :move_to_index, except: [:index, :show]
+  before_action :find_id, except: [:index, :new, :create]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -11,7 +12,6 @@ class ItemsController < ApplicationController
 
   def create
     @items = Item.create(item_params)
-
     if @items.valid?
       @items.save
       redirect_to root_path
@@ -21,13 +21,24 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render 'show'
+    end
   end
 
   private
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def find_id
+    @item = Item.find(params[:id])
   end
 
   def item_params
