@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_burden
   belongs_to_active_hash :delivery_area
   belongs_to_active_hash :delivery_days
+  has_many :item_tag_relations
+  has_many :tags, through: :item_tag_relations
 
   with_options presence: true do
     validates :images

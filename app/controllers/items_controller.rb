@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     @items = Item.create(item_params)
     if @items.valid?
       @items.save
-      redirect_to root_path
+      return redirect_to root_path
     else
       render 'new'
     end
@@ -35,6 +35,8 @@ class ItemsController < ApplicationController
       render 'show'
     end
   end
+
+
 
   private
 
@@ -58,5 +60,6 @@ class ItemsController < ApplicationController
       :delivery_days_id,
       images: []
     ).merge(user_id: current_user.id)
+    .merge(tag: tag_name)
   end
 end
