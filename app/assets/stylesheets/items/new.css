@@ -88,6 +88,18 @@
 .click-upload>p {
   margin-bottom: 15px;
 }
+/* .click-upload>div {
+  height: 33vh;
+  width: 33vh;
+  flex-wrap: wrap;
+}
+
+.click-upload>div>div>img {
+  height: 33vh;
+  width: 33vh;
+  flex-wrap: wrap;
+} */
+
 
 /* /出品画像 */
 
