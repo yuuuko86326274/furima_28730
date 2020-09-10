@@ -22,6 +22,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
     inputHTML.addEventListener('change', (e) => {
       const file = e.srcElement.files[0];
+      
       const blob = window.URL.createObjectURL(file);
 
       createImageHTML(blob)
