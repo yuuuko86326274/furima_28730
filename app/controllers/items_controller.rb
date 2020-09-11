@@ -7,16 +7,18 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.new
+    @items_tag = ItemsTag.new
   end
 
   def create
-    @items = Item.create(item_params)
-    if @items.valid?
-      @items.save
+    # binding.pry
+    @items_tag = ItemsTag.new(item_params)
+    # binding.pry
+    if @items_tag.valid?
+      @items_tag.save
       return redirect_to root_path
     else
-      render 'new'
+    render 'new'
     end
   end
 
@@ -36,8 +38,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
-
   private
 
   def move_to_index
@@ -49,7 +49,8 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(
+    params.require(:items_tag).permit(
+      :tag_name,
       :name,
       :item_text,
       :price,
@@ -60,6 +61,5 @@ class ItemsController < ApplicationController
       :delivery_days_id,
       images: []
     ).merge(user_id: current_user.id)
-    .merge(tag: tag_name)
   end
 end

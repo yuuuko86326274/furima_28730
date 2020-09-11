@@ -115,6 +115,19 @@
   resize: none;
 }
 
+.tag-field{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.child{
+  border-bottom:#666 1px solid;
+  margin: 10px 0;
+  padding-left: 11px;
+}
+
 .items-explain {
   margin-top: 2vh;
 }
