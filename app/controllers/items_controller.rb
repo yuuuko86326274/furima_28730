@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: %i[index show]
-  before_action :find_id, except: %i[index new create]
+  before_action :find_id, except: %i[index new]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -11,9 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @items_tag = ItemsTag.new(item_params)
-    # binding.pry
     if @items_tag.valid?
       @items_tag.save
       return redirect_to root_path
@@ -36,6 +34,12 @@ class ItemsController < ApplicationController
     else
       render 'show'
     end
+  end
+
+  def search
+    return nil if params[:input] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:input]}%"] )
+    render json:{ keyword: tag }
   end
 
   private

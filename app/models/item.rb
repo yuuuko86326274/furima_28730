@@ -10,24 +10,4 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_days
   has_many :item_tag_relations
   has_many :tags, through: :item_tag_relations
-
-  # with_options presence: true do
-  #   validates :images
-  #   validates :name
-  #   validates :item_text
-  #   validates :price, inclusion: { in: (300..9_999_999) }
-  #   validates :user_id
-  #   validates :category_id
-  #   validates :item_status_id
-  #   validates :delivery_burden_id
-  #   validates :delivery_area_id, numericality: { other_than: 0 }
-  #   validates :delivery_days_id
-  # end
-
-  # with_options numericality: { other_than: 1 } do
-  #   validates :category_id
-  #   validates :item_status_id
-  #   validates :delivery_burden_id
-  #   validates :delivery_days_id
-  # end
 end
