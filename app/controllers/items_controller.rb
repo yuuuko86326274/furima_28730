@@ -20,14 +20,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
-    # binding.pry
-    #@items_tag = ItemsTag#.new(item_update_params)
+    @items_tag = ItemsTag.new(item_update_params)
     if @items_tag.valid?
-      @items_tag.update(item_update_params)
+      @items_tag.update
       return redirect_to root_path
     else
       render 'edit'

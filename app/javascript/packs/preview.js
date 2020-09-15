@@ -27,7 +27,7 @@ if (document.URL.match( /new/ )) {
       inputHTML.addEventListener('change', (e) => {
         file = e.target.files[0];
         blob = window.URL.createObjectURL(file);
-//debugger
+
         createImageHTML(blob)
       })
     }

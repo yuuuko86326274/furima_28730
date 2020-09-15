@@ -34,7 +34,6 @@ class ItemsTag
   def update
     item = Item.find(id)
     item.update(name: name,item_text: item_text,price: price,category_id: category_id,item_status_id: item_status_id,delivery_burden_id: delivery_burden_id,delivery_area_id: delivery_area_id,delivery_days_id: delivery_days_id, images: images, user_id: user_id)
-    # binding.pry
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     items_tag = ItemTagRelation.find_by(item_id: item.id)
