@@ -4,9 +4,11 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, url: item_path(@item), method: :patch, local: true do |f| %>
+    <%= form_with model: @item, url: item_path, method: :patch, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
-
+      <%# <% if @items_tag.valid? %>
+        <%# <%= render 'shared/error_messages' %>   
+      <%# <% end %>  
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -18,7 +20,7 @@
           クリックしてファイルをアップロード
         </p>
         <div id="image-list"></div>
-        <%= f.file_field :images, name: 'item[images][]',id:"item-image", multiple: true %>
+        <%= f.file_field :images, name: 'item[images][]', id:"item-image", multiple: true %>
       </div>
     </div>
     <%# /出品画像 %>
@@ -29,6 +31,15 @@
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+     
+      <div class="tag-field", id='tag-field'>
+        <div class="weight-bold-text">
+          タグ
+        </div>
+        <%= f.text_field :tag_name, class:"items-text", value: @item.tags[0].tag_name, placeholder:"商品の種類（任意) (タグ付け利用により販売率が上がります）" %>
+        <div id="search-result"></div>
+      </div>
+     
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明

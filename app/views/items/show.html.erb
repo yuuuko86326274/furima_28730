@@ -9,7 +9,7 @@
     <div class='item-img-content'>
       <%# <%= image_tag @item.image ,class:"item-box-img" %>
       <% @item.images.each do |img| %>
-        <%= image_tag img, class: "item-box-img" %>
+        <%= image_tag(img, class: "item-box-img") %>
 
           <% if @item.purchase_item.present? %>
             <div class='sold-out'>
@@ -46,6 +46,14 @@
           <th class="detail-item">出品者</th>
           <td class="detail-value"><%= @item.user.nickname %></td>
         </tr>
+        <tr>
+          <th class="detail-item">タグ</th>
+          <td class="detail-value">
+            <% @item.item_tag_relations.each do |item| %>
+              <%= item.tag.tag_name %>
+            <% end %>
+          </td> 
+        </tr> 
         <tr>
           <th class="detail-item">カテゴリー</th>
           <td class="detail-value"><%= @item.category.name %></td>
