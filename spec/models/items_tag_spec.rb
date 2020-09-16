@@ -4,7 +4,7 @@ RSpec.describe ItemsTag, type: :model do
   describe '出品情報の保存' do
     before do
       user = FactoryBot.create(:user)
-      @items_tag = FactoryBot.build(:items_tag,  images: fixture_file_upload('public/images/camera.png'), user_id: user.id)
+      @items_tag = FactoryBot.build(:items_tag, images: fixture_file_upload('public/images/camera.png'), user_id: user.id)
     end
 
     context '出品がうまくいくとき' do
@@ -98,4 +98,3 @@ RSpec.describe ItemsTag, type: :model do
     end
   end
 end
-

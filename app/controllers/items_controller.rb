@@ -14,9 +14,9 @@ class ItemsController < ApplicationController
     @items_tag = ItemsTag.new(item_params)
     if @items_tag.valid?
       @items_tag.save
-      return redirect_to root_path
+      redirect_to root_path
     else
-    render 'new'
+      render 'new'
     end
   end
 
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     @items_tag = ItemsTag.new(item_update_params)
     if @items_tag.valid?
       @items_tag.update
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -43,9 +43,10 @@ class ItemsController < ApplicationController
   end
 
   def search
-    return nil if params[:input] == ""
-    tag = Tag.where(['tag_name LIKE ?', "%#{params[:input]}%"] )
-    render json:{ keyword: tag }
+    return nil if params[:input] == ''
+
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:input]}%"])
+    render json: { keyword: tag }
   end
 
   private
@@ -72,6 +73,7 @@ class ItemsController < ApplicationController
       images: []
     ).merge(user_id: current_user.id)
   end
+
   def item_update_params
     params.require(:item).permit(
       :tag_name,
@@ -84,6 +86,6 @@ class ItemsController < ApplicationController
       :delivery_area_id,
       :delivery_days_id,
       images: []
-    ).merge(user_id: current_user.id, id: params[:id] )
+    ).merge(user_id: current_user.id, id: params[:id])
   end
 end
