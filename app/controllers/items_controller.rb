@@ -20,6 +20,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @items_tag = ItemsTag.new
+  end
+
   def update
     @items_tag = ItemsTag.new(item_update_params)
     if @items_tag.valid?

@@ -5,10 +5,8 @@
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, url: item_path, method: :patch, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
-      <%# <% if @items_tag.valid? %>
-        <%# <%= render 'shared/error_messages' %>   
-      <%# <% end %>  
+    <%= render 'shared/error_messages', model: @items_tag %>
+
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
