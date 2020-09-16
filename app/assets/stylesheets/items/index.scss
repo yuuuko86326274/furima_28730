@@ -274,6 +274,22 @@ a {
   font: bold;
 }
 
+.sooold-out>span {
+  color: #FFF;
+  font-size: 45px;
+  font: bold;
+}
+
+.sooold-out {
+  position: absolute;
+  top: 25%;
+  width: 33vh;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+}
+
+
 
 .item-info {
   background-color: #FFF;

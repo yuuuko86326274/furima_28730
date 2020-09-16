@@ -28,8 +28,18 @@
   justify-content: center;
 }
 
-.buy-item-img {
+.item-img-contenttttt{
+  position: relative;
   margin-right: 20px;
+  height: 130px;
+  width: 250px;
+  object-fit: contain;
+  white-space:nowrap;
+  overflow-x:scroll;
+  overflow-y:hidden;
+}
+
+.buy-item-img {
   height: 130px;
   width: 250px;
   object-fit: contain;

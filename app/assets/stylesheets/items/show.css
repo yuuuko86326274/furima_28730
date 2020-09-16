@@ -30,7 +30,8 @@
   width: 60vw;
   min-height: 500px;
   white-space:nowrap;
-  overflow:scroll;
+  overflow-x:scroll;
+  overflow-y:hidden;
 }
 
 .item-box-img {

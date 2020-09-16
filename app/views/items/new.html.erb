@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @items, url: items_path, method: :post, local: true do |f| %>
+    <%= form_with model: @items_tag, url: items_path, method: :post, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <%# 出品画像 %>
     <div class="img-upload">
@@ -18,7 +18,7 @@
           クリックしてファイルをアップロード
         </p>
         <div id="image-list"></div>
-        <%= f.file_field :images, id:"item-image", name: 'item[images][]', multiple: true %>
+        <%= f.file_field :images, id:"item-image", name: 'items_tag[images][]', multiple: true %>
       </div>
     </div>
     <%# /出品画像 %>
@@ -28,13 +28,22 @@
         商品名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :name, class:"items-text", id:"item-name", name: 'items_tag[name]', placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+
+      <div class="tag-field", id='tag-field'>
+        <div class="weight-bold-text">
+          タグ
+        </div>
+        <%= f.text_field :tag_name, class:"items-text", name: 'items_tag[tag_name]', placeholder:"商品の種類（任意) (タグ付け利用により販売率が上がります）" %>
+        <div id="search-result"></div>
+      </div>
+
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :item_text, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :item_text, class:"items-text", id:"item-info", name:'items_tag[item_text]', placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
@@ -96,7 +105,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", name: 'items_tag[price]', placeholder:"例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>

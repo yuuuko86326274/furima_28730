@@ -129,12 +129,11 @@
       <li class='list'>
         <%= link_to item_path(item) do %>
           <div class='item-img-content'>
-            <%# <%= image_tag item.image, class: "item-img" %> 
             <%  if item.images.count > 0 %>
               <%= image_tag item.images.first, class: "item-img" %>
 
-                <% if item.purchase_item.present? %>　
-                  <div class='sold-out'>
+                <% if item.purchase_item.present? %>
+                  <div class='sooold-out'>
                     <span>Sold Out!!</span>
                   </div>
                 <% end %> 
@@ -144,7 +143,7 @@
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
-              <%= item.item_text %>
+              <%= item.name %>
             </h3>
             <div class='item-price'>
               <span><%= item.price %>円<br>(税込み)</span>
