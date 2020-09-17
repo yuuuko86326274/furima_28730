@@ -1,28 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 # テーブル設計
 
 ##  users テーブル
@@ -66,7 +43,7 @@ Things you may want to cover:
 
 | Column              | Type       | Option                                 |
 | ------------------- | ---------- | -------------------------------------- |
-| image               | string     | null: false                            |
+| images              | string     | null: false                            |
 | name                | string     | null: false                            |
 | item_text           | text       | null: false                            |
 | price               | integer    | null: false                            |
@@ -80,12 +57,40 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :purchase_item
+- has_one :purchase_item, dependent: destroy
+- has_many_attached :images
+- has_many :item_tag_relations
+- has_many :tags, through: :item_tag_relations, dependent: :destroy
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :delivery_burden
 - belongs_to_active_hash :delivery_area
 - belongs_to_active_hash :delivery_days
+
+
+##  tags テーブル
+
+| Column           | Type       | Option                               |
+| ---------------- | ---------- | ------------------------------------ |
+| tag_name         | string     | uniqueness: true                     |
+
+### Association
+
+- has_many :item_tag_relations
+- has_many :items, through: :item_tag_relations
+
+
+##  item_tag_relations テーブル
+
+| Column           | Type       | Option                               |
+| ---------------- | ---------- | ------------------------------------ |
+| item             | references | null: false, forein_key: true        |
+| tag              | references | null: false, forein_key: true        |
+
+### Association
+
+- belongs_to :item
+- belongs_to :tag
 
 
 ##  purchase_items テーブル
