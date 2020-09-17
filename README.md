@@ -7,7 +7,7 @@
 | Column           | Type       | Option                   |
 | ---------------- | ---------- | ------------------------ |
 | nickname         | string     | null: false              |
-| email            | string     | null:false               |
+| email            | string     | null: false              |
 | password         | string     | null: false              |
 | first_name       | string     | null: false              |
 | last_name        | string     | null: false              |
@@ -57,10 +57,10 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase_item, dependent: destroy
+- has_one :purchase_item
 - has_many_attached :images
 - has_many :item_tag_relations
-- has_many :tags, through: :item_tag_relations, dependent: :destroy
+- has_many :tags, through: :item_tag_relations
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :delivery_burden
@@ -72,7 +72,7 @@
 
 | Column           | Type       | Option                               |
 | ---------------- | ---------- | ------------------------------------ |
-| tag_name         | string     | uniqueness: true                     |
+| tag_name         | string     | null: false                          |
 
 ### Association
 
