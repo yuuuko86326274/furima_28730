@@ -28,8 +28,8 @@
 | postal_code      | string     | null: false                            |
 | prefectures_id   | integer    | null: false                            |
 | city             | string     | null: false                            |
-| adress_num       | string     | null: false                            |
-| bilding_name     | string     |                                        |
+| address_num       | string     | null: false                            |
+| building_name     | string     |                                        |
 | tel              | string     | null: false                            |
 | purchase_item    | references | null: false, forein_key: true          |
 
